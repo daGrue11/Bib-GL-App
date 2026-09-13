@@ -21,15 +21,15 @@ Frist abläuft.
 
 | Funktion | Details |
 |---|---|
-| **Ausgeliehene Medien** | Titel, Verfasser, Mediengruppe, Zweigstelle, Cover. Antippen öffnet die Detailseite im Browser. |
-| **Countdown** | Farbige Ampel bis zur Rückgabe: rot überfällig, orange ≤ 2 Tage, gelb ≤ 7 Tage, grün darüber |
+| **Ausgeliehene Medien** | Titel, Verfasser, Mediengruppe, Zweigstelle, Cover. Antippen öffnet die Detailseite im Browser |
+| **Countdown** | Farbige Ampel bis zur Rückgabe: rot überfällig, orange ≤ 2 Tage, gelb ≤ 7 Tage, grün ab 8 Tagen |
 | **Verlängern** | Einzeln oder alle verlängerbaren Medien auf einmal. Nicht verlängerbare Medien zeigen den Grund („Die maximale Anzahl der Verlängerungen ist erreicht.") |
 | **Gebühren** | Offene Gebühren, Einzahlungen, Saldo, Einzelposten |
 | **Vormerkungen** | Vorbestellte Medien und was gerade abholbereit ist |
 | **Merkliste** | Gemerkte Titel, Antippen öffnet die Detailseite |
 | **Ausweis** | Warnung, wenn er in den nächsten 60 Tagen abläuft |
-| **Erinnerungen** | Täglicher Hintergrund-Check, Benachrichtigung einstellbar: 1–14 Tagen vor Fristende |
-| **Mehrere Ausweise** | Konto-Umschalter in der Titelleiste. Jedes Konto mit eigener Vorschau und eigenen Erinnerungen |
+| **Erinnerungen** | Täglicher Hintergrund-Check, Benachrichtigung einstellbar: 1–14 Tage vor Fristende |
+| **Mehrere Ausweise** | Konto-Umschalter in der Titelleiste, jedes Konto mit eigener Vorschau und eigenen Erinnerungen |
 
 Ohne Netz zeigt die App den zuletzt geladenen Stand, damit die Fristen auch
 unterwegs sichtbar bleiben.
