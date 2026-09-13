@@ -3,10 +3,10 @@
 **Inoffizielle Android-App für die Stadtbücherei Bergisch Gladbach**
 
 Zeigt auf einen Blick, was ausgeliehen ist, wie lange es noch bis zur Rückgabe
-dauert und was sich verlängern lässt und erinnert rechtzeitig, bevor eine
+dauert, was sich verlängern lässt und erinnert rechtzeitig, bevor eine
 Frist abläuft.
 
-> **Privates Hobbyprojekt.** Nicht von der Stadtbücherei Bergisch Gladbach
+> **Privates Projekt.** Nicht von der Stadtbücherei Bergisch Gladbach
 > herausgegeben. Nutzung und Installation auf eigene Verantwortung. Keine Garantie, kein Support.
 
 ---
