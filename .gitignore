@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+
+# Der Signaturschluessel gehoert NICHT ins oeffentliche Repository.
+# Er liegt in den GitHub-Secrets KEYSTORE_BASE64 / KEYSTORE_PASSWORD;
+# der Workflow legt app/keystore.jks vor dem Build daraus an.
+*.jks
+*.keystore

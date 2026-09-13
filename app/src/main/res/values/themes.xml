@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nur fuer den kurzen Moment vor dem ersten Compose-Frame sichtbar.
+         colorBackground folgt automatisch Hell/Dunkel, damit es beim Start
+         nicht weiss aufblitzt. -->
+    <style name="Theme.BibGL" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+    </style>
+</resources>
