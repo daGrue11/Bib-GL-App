@@ -10,8 +10,8 @@ das Auslesen der Bibliotheksseite funktioniert.
 Es wird kein Android Studio gebraucht — GitHub baut den APK:
 
 ```bash
-git clone https://github.com/daGrue11/Stadtbuecherei-App.git
-cd Stadtbuecherei-App
+git clone https://github.com/daGrue11/Bib-GL-App.git
+cd Bib-GL-App
 ```
 
 Im eigenen Fork unter **Actions** den Workflow *Android APK bauen* starten und
@@ -25,7 +25,7 @@ Mit Android Studio: Projektordner öffnen, Gradle synchronisieren, `Run`.
 
 Die Stadtbücherei nutzt **OCLC OPEN** auf DotNetNuke (ASP.NET WebForms). Eine
 offizielle Schnittstelle gibt es nicht, die App liest die Website aus. Das
-Wesentliche steckt in [`LibraryClient.kt`](https://github.com/daGrue11/Stadtbuecherei-App/blob/main/app/src/main/java/de/bibgl/konto/data/LibraryClient.kt):
+Wesentliche steckt in [`LibraryClient.kt`](https://github.com/daGrue11/Bib-GL-App/blob/main/app/src/main/java/de/bibgl/konto/data/LibraryClient.kt):
 
 - **Login** ist ein WebForms-Postback auf `/Login` mit `__VIEWSTATE` und
   `__EVENTVALIDATION` aus dem Formular.

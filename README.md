@@ -36,7 +36,7 @@ unterwegs sichtbar bleiben.
 
 ## Installation
 
-1. **[APK herunterladen](https://github.com/daGrue11/Stadtbuecherei-App/releases/latest)** — unter *Assets* die Datei
+1. **[APK herunterladen](https://github.com/daGrue11/Bib-GL-App/releases/latest)** — unter *Assets* die Datei
    `Bib-GL-App-*.apk` antippen
 2. Die Datei auf dem Android-Gerät öffnen
 3. Android fragt, ob Apps aus dieser Quelle installiert werden dürfen → erlauben
