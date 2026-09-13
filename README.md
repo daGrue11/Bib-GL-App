@@ -67,58 +67,10 @@ Die App hat keinen Server und keine Analyse-Funktionen.
 Die einzigen weiteren Netzwerkzugriffe sind die Cover-Bilder, die die
 Bibliotheksseite selbst einbindet (u.a. von Amazon-Bildservern).
 
-## Selbst bauen
+## Technische Details
 
-Es wird kein Android Studio gebraucht — GitHub baut den APK:
-
-```bash
-git clone https://github.com/daGrue11/Stadtbuecherei-App.git
-cd Stadtbuecherei-App
-```
-
-Im eigenen Fork unter **Actions** den Workflow *Android APK bauen* starten und
-den APK anschließend unter *Artifacts* herunterladen. Ohne hinterlegten
-Signaturschlüssel wird mit einem Debug-Schlüssel signiert — der APK läuft, kann
-aber keine offizielle Version aus den Releases überschreiben.
-
-Mit Android Studio: Projektordner öffnen, Gradle synchronisieren, `Run`.
-
-## Wie es funktioniert
-
-Die Stadtbücherei nutzt **OCLC OPEN** auf DotNetNuke (ASP.NET WebForms). Eine
-offizielle Schnittstelle gibt es nicht, die App liest die Website aus. Das
-Wesentliche steckt in [`LibraryClient.kt`](https://github.com/daGrue11/Stadtbuecherei-App/blob/main/app/src/main/java/de/bibgl/konto/data/LibraryClient.kt):
-
-- **Login** ist ein WebForms-Postback auf `/Login` mit `__VIEWSTATE` und
-  `__EVENTVALIDATION` aus dem Formular.
-- **Das ganze Konto** steht danach in einer einzigen Seite `/Mein-Konto` — alle
-  Reiter sind serverseitig gerendert, es braucht keinen Klick pro Reiter.
-- **Verlängerbarkeit** steht *nicht* im HTML, sondern wird per AJAX von
-  `PatronAccountService.asmx/IsCatalogueCopyExtendable` nachgeladen. Die App ruft
-  denselben JSON-Endpunkt auf und bekommt pro Medium den Status, eine Begründung
-  und das neue Fristdatum.
-- **Verlängern ist zweistufig.** Der Klick auf „Verlängern" verlängert noch
-  nichts, sondern öffnet den Dialog „Verlängerung bestätigen", der anfallende
-  Verlängerungs- und Säumnisgebühren nennt. Erst dessen Button führt sie aus.
-  Fallen Gebühren an, fragt die App vorher nach, statt sie stillschweigend zu
-  akzeptieren.
-- **Element-IDs** werden über ihre Endung angesprochen (`[id$=lblFeeTotalData]`),
-  weil die Präfixe eine wechselnde Modulnummer enthalten — und immer auf das
-  jeweilige Panel eingegrenzt, weil die Seite ausgeblendete Dialoge mit
-  denselben ID-Endungen enthält.
-- **Erfolg einer Verlängerung** wird daran gemessen, ob sich die Frist
-  tatsächlich verschoben hat, nicht an den Meldungstexten der Seite.
-- **Mehrere Konten** bekommen je einen eigenen HTTP-Client mit eigenem
-  Cookie-Jar; die Seite kennt nur eine Anmeldung pro Sitzung.
-
-Weil die App eine Website ausliest, kann ein Umbau durch die Bibliothek die
-Anzeige stören. Die Selektoren sind bewusst so gewählt, dass sie Änderungen an
-Layout und Modulnummern überstehen — aber eine Garantie ist das nicht.
-
-## Technik
-
-Kotlin · Jetpack Compose (Material 3) · OkHttp · Jsoup · WorkManager ·
-EncryptedSharedPreferences · minSdk 26 · Gebaut mit GitHub Actions
+Wie die App die Bibliotheksseite ausliest, wie man sie selbst baut und warum
+manche Dinge so gelöst sind, steht in **[docs/TECHNIK.md](docs/TECHNIK.md)**.
 
 ## Lizenz
 
