@@ -7,8 +7,7 @@ dauert, welche sich verlängern lassen und benachrichtigt rechtzeitig, bevor ein
 Frist abläuft.
 
 > **Privates Projekt.** Nicht von der Stadtbücherei Bergisch Gladbach
-> herausgegeben. Nutzung und Installation auf eigene Verantwortung. Keine Garantie, kein Support.
-
+> herausgegeben. Nutzung und Installation auf eigene Verantwortung.
 ---
 
 ## Screenshots
