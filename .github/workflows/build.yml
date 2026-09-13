@@ -1,0 +1,84 @@
+name: Android APK bauen
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write        # für das Anlegen des Releases beim Tag-Push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+
+    steps:
+      - name: Quellcode holen
+        uses: actions/checkout@v5
+
+      - name: JDK 17 einrichten
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # Der Schluessel liegt bewusst nicht im Repository. Fehlt das Secret
+      # (z.B. in einem Fork), wird mit dem Debug-Schluessel signiert - der APK
+      # laeuft dann, taugt aber nicht als Update einer offiziellen Version.
+      - name: Signaturschlüssel bereitstellen
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > app/keystore.jks
+            keytool -list -keystore app/keystore.jks \
+              -storetype PKCS12 -storepass "$KEYSTORE_PASSWORD" > /dev/null
+            echo "Signaturschlüssel bereit."
+          else
+            echo "::warning::Kein KEYSTORE_BASE64 hinterlegt - APK wird debug-signiert."
+          fi
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '8.11.1'
+
+      - name: APK bauen
+        run: gradle assembleRelease --no-daemon --stacktrace
+
+      # Bei einem Tag zaehlt dessen Name, sonst die versionName aus dem Build -
+      # sonst hiesse die Datei bei einem normalen Push "Bib-GL-App-main.apk".
+      - name: APK benennen
+        id: apk
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' app/build.gradle.kts)-dev"
+          fi
+          NAME="Bib-GL-App-${VERSION}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$NAME"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "APK: $NAME"
+
+      - name: APK als Artefakt hochladen
+        uses: actions/upload-artifact@v5
+        with:
+          name: Bib-GL-App
+          path: ${{ steps.apk.outputs.name }}
+          if-no-files-found: error
+
+      # Nur bei einem Tag wie v1.2: veroeffentlicht den APK als Release-Datei.
+      # Nur die ist ohne GitHub-Login herunterladbar - Artefakte sind es nicht.
+      - name: Release veröffentlichen
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "${{ steps.apk.outputs.name }}" \
+            --title "Bib-GL-App $GITHUB_REF_NAME" \
+            --notes "Installationsanleitung und Hinweise siehe README im Repository." \
+            --latest
