@@ -21,15 +21,15 @@ Frist abläuft.
 
 | Funktion | Details |
 |---|---|
-| **Ausgeliehene Medien** | Titel, Verfasser, Mediengruppe, Zweigstelle, Cover |
+| **Ausgeliehene Medien** | Titel, Verfasser, Mediengruppe, Zweigstelle, Cover. Antippen öffnet die Detailseite im Browser. |
 | **Countdown** | Farbige Ampel bis zur Rückgabe: rot überfällig, orange ≤ 2 Tage, gelb ≤ 7 Tage, grün darüber |
-| **Verlängern** | Einzeln oder alle verlängerbaren auf einmal. Nicht verlängerbare Medien zeigen den Grund („Die maximale Anzahl der Verlängerungen ist erreicht.") |
+| **Verlängern** | Einzeln oder alle verlängerbaren Medien auf einmal. Nicht verlängerbare Medien zeigen den Grund („Die maximale Anzahl der Verlängerungen ist erreicht.") |
 | **Gebühren** | Offene Gebühren, Einzahlungen, Saldo, Einzelposten |
 | **Vormerkungen** | Vorbestellte Medien und was gerade abholbereit ist |
 | **Merkliste** | Gemerkte Titel, Antippen öffnet die Detailseite |
 | **Ausweis** | Warnung, wenn er in den nächsten 60 Tagen abläuft |
-| **Erinnerungen** | Täglicher Hintergrund-Check, Meldung ab einstellbar 1–14 Tagen vor Fristende |
-| **Mehrere Ausweise** | Umschalter in der Titelleiste — eigener Ausweis, Kinder, Partner. Jedes Konto mit eigener Vorschau und eigenen Erinnerungen |
+| **Erinnerungen** | Täglicher Hintergrund-Check, Benachrichtigung einstellbar: 1–14 Tagen vor Fristende |
+| **Mehrere Ausweise** | Konto-Umschalter in der Titelleiste. Jedes Konto mit eigener Vorschau und eigenen Erinnerungen |
 
 Ohne Netz zeigt die App den zuletzt geladenen Stand, damit die Fristen auch
 unterwegs sichtbar bleiben.
@@ -42,8 +42,7 @@ unterwegs sichtbar bleiben.
 3. Android fragt, ob Apps aus dieser Quelle installiert werden dürfen → erlauben
 4. Installieren, App öffnen, Ausweisnummer und Passwort der Stadtbücherei eingeben
 
-Für spätere Versionen einfach den neuen APK installieren — er geht über die
-vorhandene Installation drüber, die gespeicherten Konten bleiben erhalten.
+Für spätere Versionen einfach den neuen APK installieren. Es wird als Update installiert. Die gespeicherten Konten bleiben erhalten.
 
 ### Voraussetzungen
 
